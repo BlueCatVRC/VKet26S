@@ -59,18 +59,6 @@
                 text-decoration: none;
             }
 
-            .world-link {
-                position: absolute;
-                top: 0%;
-                right: 0%;
-                background-color: var(--card-color);
-                border-radius: 0px 5px 0px 5px;
-                text-align: center;
-                width: 25px;
-                height: 25px;
-                text-decoration: none;
-            }
-
             .seen {
                 opacity: 45%;
             }
@@ -215,13 +203,6 @@
                 img.src = world.image;
                 root.appendChild(img);
 
-                // const a = document.createElement("a");
-                // a.className = "world-link";
-                // a.target = "_blank";
-                // a.href = `https://vrchat.com/home/world/${world.id}/info`;
-                // a.textContent = "🔗";
-                // root.appendChild(a);
-
                 const name = document.createElement("a");
                 name.className = "world-name";
                 name.textContent = world.name;
@@ -237,7 +218,7 @@
                     const isSeen = root.classList.contains("seen");
                     if (isSeen) seenWorlds[world.id] = true;
                     else delete seenWorlds[world.id];
-                    //127.0.0.1:3000/index.html?serverWindowId=154acf0a-cd5b-40d5-bbfc-247c89aad5ad
+
                     http: localStorage.setItem("seenWorlds_vk26s", JSON.stringify(seenWorlds));
                 });
 
