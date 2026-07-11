@@ -1,0 +1,248 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>VKet Summer 2026</title>
+        <style>
+            * {
+                --card-color: #677b8f;
+            }
+
+            body {
+                background-color: #1f1f20;
+            }
+
+            #worlds {
+                display: grid;
+                width: 100%;
+                height: 100%;
+                grid-template-columns: repeat(7, minmax(0, 1fr));
+                justify-content: start;
+                row-gap: 6px;
+                column-gap: 6px;
+                align-items: start;
+                align-content: start;
+            }
+
+            .world {
+                box-sizing: border-box;
+                aspect-ratio: 1.33333333333;
+                position: relative;
+                font-size: 15px;
+                text-align: center;
+            }
+
+            .world-background {
+                box-sizing: border-box;
+                display: block;
+                border-width: 2px;
+                border-style: solid;
+                border-color: var(--card-color);
+                border-radius: 5px;
+                width: 100%;
+                height: 100%;
+            }
+
+            .world-name {
+                box-sizing: border-box;
+                position: absolute;
+                bottom: 0%;
+                left: 0%;
+                transform: translate(-00%, -00%);
+                background-color: var(--card-color);
+                border-radius: 0px 0px 5px 5px;
+                color: #efefff;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                font-weight: 600;
+                padding: 2px 5px;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            .world-link {
+                position: absolute;
+                top: 0%;
+                right: 0%;
+                background-color: var(--card-color);
+                border-radius: 0px 5px 0px 5px;
+                text-align: center;
+                width: 25px;
+                height: 25px;
+                text-decoration: none;
+            }
+
+            .seen {
+                opacity: 45%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="worlds"></div>
+
+        <script>
+            const worldsContainer = document.getElementById("worlds");
+
+            const worlds = [
+                {
+                    name: "Entrance Parareal Central Ignition Point",
+                    id: "wrld_624a099b-0570-48af-8eba-7f9658a932aa",
+                    image: "https://api.vrchat.cloud/api/1/image/file_dfe725ac-4fed-4cb1-884c-f7ec99c34d94/2/256",
+                },
+                {
+                    name: "Parareal Akihabara",
+                    id: "wrld_5b48a681-b03a-47d7-8ce9-83ba5a6f0f68",
+                    image: "https://api.vrchat.cloud/api/1/image/file_07974fd5-885e-4667-ac07-912b9a57e9af/2/256",
+                },
+                {
+                    name: "Parareal Broadway",
+                    id: "wrld_129ebe25-bf8b-4a87-b9d2-5fd2c5676a77",
+                    image: "https://api.vrchat.cloud/api/1/image/file_b7db8668-29cc-4857-98a7-4f53fd739256/2/256",
+                },
+                {
+                    name: "Deep Mist ［First Visit］",
+                    id: "wrld_3cbec2ab-2e81-4df9-9fca-a941e03a7124",
+                    image: "https://api.vrchat.cloud/api/1/image/file_ee276326-d0e1-45e3-8a10-70b61f9d4d08/3/256",
+                },
+                {
+                    name: "Deep Mist ［Final Harvest］",
+                    id: "wrld_63aefe0d-2447-4f59-a271-a7cd9ba1a163",
+                    image: "https://api.vrchat.cloud/api/1/image/file_ae04a62a-ebde-4bdd-a83b-92452facaa4a/3/256",
+                },
+                {
+                    name: "Ohh-Edoǃ MECHANICA ［Capital of Inu］",
+                    id: "wrld_c13a7a17-6225-4a1d-b9ec-72f5f5842dce",
+                    image: "https://api.vrchat.cloud/api/1/image/file_e22c6009-e92c-428b-8dda-8ef91f79f727/2/256",
+                },
+                {
+                    name: "Ohh-Edoǃ MECHANICA ［Land of Neko］",
+                    id: "wrld_d958aa38-425c-4b5c-8d48-a9d138dde9e9",
+                    image: "https://api.vrchat.cloud/api/1/image/file_863f11ec-e8d9-4db7-97a3-fc92d4ce80dc/2/256",
+                },
+                {
+                    name: "VOLTAGER ［EX-Volcano］",
+                    id: "wrld_a73461b0-e145-4d62-b7ec-23af56868af0",
+                    image: "https://api.vrchat.cloud/api/1/image/file_ee6d2dd1-039c-401f-a66d-fe03524db999/2/256",
+                },
+                {
+                    name: "VOLTAGER ［Mystica-Jungle］",
+                    id: "wrld_e912ff7b-d1e8-4956-adc8-6bf136b38f46",
+                    image: "https://api.vrchat.cloud/api/1/image/file_fe712adb-ebec-474d-bcac-10990ff37ebc/5/256",
+                },
+                {
+                    name: "VOLTAGER ［Hyper-Galaxy］",
+                    id: "wrld_cc59aa41-d01b-44dc-86ea-eb6f06f39643",
+                    image: "https://api.vrchat.cloud/api/1/image/file_ec466c71-9a73-45c4-a0da-7f5394fc35af/2/256",
+                },
+                {
+                    name: "ポピー横丁 Poppy Street ［Dusk Call］",
+                    id: "wrld_7dce7a0d-e03e-43fa-aca3-0884f7a5482d",
+                    image: "https://api.vrchat.cloud/api/1/image/file_4d5bdc0e-9b9e-4405-abc0-4ff76103a64d/3/256",
+                },
+                {
+                    name: "ポピー横丁 Poppy Street ［Pale Dawn］",
+                    id: "wrld_b2407383-0947-4bb0-a636-bdb8348681d3",
+                    image: "https://api.vrchat.cloud/api/1/image/file_9b77599d-2e0d-4f56-adef-e0ea1e8d0498/3/256",
+                },
+                {
+                    name: "［Wave］ Cocoon Art Aquarium Redive",
+                    id: "wrld_8ed36e68-0016-44e5-9114-fa9b3f92baed",
+                    image: "https://api.vrchat.cloud/api/1/image/file_8e17aba6-dcd5-4496-80b0-14525da945eb/2/256",
+                },
+                {
+                    name: "［Pulse］ Cocoon Art Aquarium Redive",
+                    id: "wrld_48a64a90-dc09-4531-afb9-2fa1cd6e4cda",
+                    image: "https://api.vrchat.cloud/api/1/image/file_f599cf17-e254-4fd5-854f-14f491f0d37c/2/256",
+                },
+                {
+                    name: "［Flow］ Cocoon Art Aquarium Redive",
+                    id: "wrld_18ef1403-7341-442a-a845-b74919cfad03",
+                    image: "https://api.vrchat.cloud/api/1/image/file_17911e8a-cbe8-4a83-a1e8-ed5bfdd04e40/2/256",
+                },
+                {
+                    name: "［Voyagers］ Argdella Rediscovered",
+                    id: "wrld_09f30c2a-472f-4559-84f7-14b78f35b52e",
+                    image: "https://api.vrchat.cloud/api/1/image/file_4e8bbf0e-998f-49d5-bd14-ec1a3b5fafef/2/256",
+                },
+                {
+                    name: "［Memento］ Argdella Rediscovered",
+                    id: "wrld_bc014be5-ea0d-49df-b955-ddbcaaad1aa1",
+                    image: "https://api.vrchat.cloud/api/1/image/file_c3aefd4e-9523-4db6-b9a3-816ed0ee3f26/2/256",
+                },
+                {
+                    name: "SKY PARK-Renew Daylight",
+                    id: "wrld_2cf9ac5d-3cfd-45de-a8cc-1a4a0bb6af9f",
+                    image: "https://api.vrchat.cloud/api/1/image/file_b013962c-3958-4d5f-853a-3e2fe09a0eec/2/256",
+                },
+                {
+                    name: "SKY PARK-Renew ［Moonlit］",
+                    id: "wrld_3331b077-7317-41b7-ba4a-d08e98d0196b",
+                    image: "https://api.vrchat.cloud/api/1/image/file_39f1b8d9-331e-4fa7-be47-aa73d2144169/2/256",
+                },
+                {
+                    name: "［1F Primal］ The Alter Vista˸ Focus",
+                    id: "wrld_168c1cdb-a480-4568-b44a-4f5d4fc642e9",
+                    image: "https://api.vrchat.cloud/api/1/image/file_261a3432-28a8-498e-bdff-3626356d4b2b/3/256",
+                },
+                {
+                    name: "［2F Actual］ The Alter Vista˸ Focus",
+                    id: "wrld_afbe5b15-95c1-4c1b-b1ca-61bf31fd988c",
+                    image: "https://api.vrchat.cloud/api/1/image/file_7b0c11fb-cf88-41a4-aa58-fd3e3733501d/2/256",
+                },
+                {
+                    name: "［3F Ideal］ The Alter Vista˸ Focus",
+                    id: "wrld_e10582cf-7a80-4caf-a313-1dc9c4cc0a65",
+                    image: "https://api.vrchat.cloud/api/1/image/file_ac184eee-95e8-4bff-8e74-c0c55f1edba4/2/256",
+                },
+                {
+                    name: "Vket Real Online",
+                    id: "wrld_948df65c-1943-45cb-b728-164915e1c01e",
+                    image: "https://api.vrchat.cloud/api/1/image/file_1dc7132c-a45b-46f8-ac52-a816779f97c4/2/256",
+                },
+            ];
+
+            let seenWorlds = JSON.parse(localStorage.getItem("seenWorlds_vk26s"));
+            if (!seenWorlds) {
+                seenWorlds = {};
+                localStorage.setItem("seenWorlds_vk26s", JSON.stringify(seenWorlds));
+            }
+
+            worlds.forEach((world) => {
+                const root = document.createElement("div");
+                root.className = "world";
+
+                const img = document.createElement("img");
+                img.className = "world-background";
+                img.src = world.image;
+                root.appendChild(img);
+
+                // const a = document.createElement("a");
+                // a.className = "world-link";
+                // a.target = "_blank";
+                // a.href = `https://vrchat.com/home/world/${world.id}/info`;
+                // a.textContent = "🔗";
+                // root.appendChild(a);
+
+                const name = document.createElement("a");
+                name.className = "world-name";
+                name.textContent = world.name;
+                name.target = "_blank";
+                name.href = `https://vrchat.com/home/world/${world.id}/info`;
+                root.appendChild(name);
+
+                if (seenWorlds[world.id] != undefined) root.classList.add("seen");
+
+                img.addEventListener("click", () => {
+                    root.classList.toggle("seen");
+
+                    const isSeen = root.classList.contains("seen");
+                    if (isSeen) seenWorlds[world.id] = true;
+                    else delete seenWorlds[world.id];
+                    //127.0.0.1:3000/index.html?serverWindowId=154acf0a-cd5b-40d5-bbfc-247c89aad5ad
+                    http: localStorage.setItem("seenWorlds_vk26s", JSON.stringify(seenWorlds));
+                });
+
+                worldsContainer.appendChild(root);
+            });
+        </script>
+    </body>
+</html>
