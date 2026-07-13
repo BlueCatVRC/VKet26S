@@ -33,7 +33,7 @@
                 text-align: center;
             }
 
-            .world-background {
+            .world .background {
                 box-sizing: border-box;
                 display: block;
                 border-width: 2px;
@@ -44,7 +44,7 @@
                 height: 100%;
             }
 
-            .world-name {
+            .world .name {
                 box-sizing: border-box;
                 position: absolute;
                 bottom: 0%;
@@ -200,12 +200,12 @@
                 root.className = "world";
 
                 const img = document.createElement("img");
-                img.className = "world-background";
+                img.className = "background";
                 img.src = world.image;
                 root.appendChild(img);
 
                 const name = document.createElement("a");
-                name.className = "world-name";
+                name.className = "name";
                 name.textContent = world.name;
                 name.target = "_blank";
                 name.href = `https://vrchat.com/home/world/${world.id}/info`;
