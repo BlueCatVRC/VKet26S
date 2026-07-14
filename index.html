@@ -88,7 +88,7 @@
             .world .button-bar .btn:not(:first-of-type)::before {
                 content: "";
                 position: absolute;
-                left: -4px; /* put the line into the margin/gap */
+                left: -4px;
                 top: 0;
                 height: 100%;
                 width: 1px;
@@ -263,12 +263,23 @@
                 const buttonBar = document.createElement("div");
                 buttonBar.className = "button-bar";
                 root.appendChild(buttonBar);
-                // vrchat://launch?ref=bluct&id=wrld_3dbc3526-851b-4e91-a319-4b1bf667853b
+
                 const buttonBarOpenInVRC = document.createElement("a");
-                buttonBarOpenInVRC.href = `vrcx://world/${world.id}`;
-                buttonBarOpenInVRC.innerHTML =
-                    '<img src="https://raw.githubusercontent.com/vrcx-team/VRCX/4e12c96d72c631df305b8571caa6817b76d6e7d1/images/VRCX.png" />';
+                buttonBarOpenInVRC.title = "Open in VRChat";
+                buttonBarOpenInVRC.href = `vrchat://launch?ref=bluecat.vkettracker&id=${world.id}:${String(
+                    Math.floor(Math.random() * 100000)
+                ).padStart(5, "0")}&attach=1`;
+                buttonBarOpenInVRC.classList.add("btn");
+                buttonBarOpenInVRC.innerHTML = '<img src="https://assets.vrchat.com/www/favicons/favicon-32x32.png" />';
                 buttonBar.appendChild(buttonBarOpenInVRC);
+
+                const buttonBarOpenInVRCX = document.createElement("a");
+                buttonBarOpenInVRCX.title = "Open in VRCX";
+                buttonBarOpenInVRCX.href = `vrcx://world/${world.id}`;
+                buttonBarOpenInVRCX.classList.add("btn");
+                buttonBarOpenInVRCX.innerHTML =
+                    '<img src="https://raw.githubusercontent.com/vrcx-team/VRCX/4e12c96d72c631df305b8571caa6817b76d6e7d1/images/VRCX.png" />';
+                buttonBar.appendChild(buttonBarOpenInVRCX);
 
                 if (seenWorlds[world.id] != undefined) root.classList.add("seen");
 
