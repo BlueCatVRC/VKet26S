@@ -69,7 +69,7 @@
                 text-align: center;
                 width: fit-content;
                 height: 20px;
-                padding: 2px 5px 2px 5px;
+                padding: 2px 4px 2px 4px;
                 text-decoration: none;
             }
 
@@ -278,7 +278,7 @@
                 buttonBarOpenInVRCX.href = `vrcx://world/${world.id}`;
                 buttonBarOpenInVRCX.classList.add("btn");
                 buttonBarOpenInVRCX.innerHTML =
-                    '<img src="https://raw.githubusercontent.com/vrcx-team/VRCX/4e12c96d72c631df305b8571caa6817b76d6e7d1/images/VRCX.png" />';
+                    '<img src="https://raw.githubusercontent.com/vrcx-team/VRCX/4e12c96d72c631df305b8571caa6817b76d6e7d1/images/VRCX.png" style="transform: scale(0.9);"/>';
                 buttonBar.appendChild(buttonBarOpenInVRCX);
 
                 if (seenWorlds[world.id] != undefined) root.classList.add("seen");
